@@ -31,7 +31,7 @@ Este repo **no** incluye:
 - Credenciales de Apple.
 - La app de OpenCore Legacy Patcher.
 - La app de HeliPort.
-- El binario/app de OpenCore Simplify.
+- El binario/app de OpCore-Simplify.
 
 Esas herramientas se descargan aparte desde sus proyectos oficiales o fuentes legítimas.
 
@@ -42,7 +42,7 @@ Leé la guía completa en orden:
 1. [Descargas necesarias](docs/es/01-descargas-necesarias.md)
 2. [Relevamiento de hardware](docs/es/02-relevamiento-hardware.md)
 3. [Crear el instalador de macOS](docs/es/03-crear-instalador.md)
-4. [Crear la primera EFI con OpenCore Simplify](docs/es/04-opencore-simplify.md)
+4. [Crear la primera EFI con OpCore-Simplify](docs/es/04-opencore-simplify.md)
 5. [Bootear e instalar macOS](docs/es/05-instalar-macos.md)
 6. [Copiar OpenCore al disco interno](docs/es/06-instalar-opencore-interno.md)
 7. [Post-instalación: OCLP, Wi-Fi, audio, pantalla](docs/es/07-post-instalacion.md)

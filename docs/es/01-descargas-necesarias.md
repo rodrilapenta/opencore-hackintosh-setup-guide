@@ -1,38 +1,104 @@
 # 01 - Descargas necesarias
 
-Este repo no incluye herramientas de terceros ni macOS.
+Este repo no incluye herramientas de terceros, EFIs privadas, valores SMBIOS ni macOS.
 
 Tenés que descargar lo necesario por separado.
 
-## Necesario
+## Herramientas necesarias
 
-### OpenCore
+### OpenCorePkg
 
-OpenCore es el bootloader. Lo vas a usar directamente o a través de herramientas que generan una EFI basada en OpenCore.
+Repositorio oficial:
 
-### OpenCore Simplify
+```text
+https://github.com/acidanthera/OpenCorePkg
+```
 
-En este workflow se usa para generar la primera EFI a partir del hardware detectado.
+Necesitás OpenCorePkg para:
 
-Tomalo como una base inicial. Después hay que validar y ajustar.
+- Archivos de release de OpenCore.
+- Utilidades de OpenCore.
+- `macrecovery`, usado para descargar archivos Recovery/BaseSystem de Apple.
 
-### Instalador de macOS
+Dentro de OpenCorePkg, `macrecovery` está en:
 
-Usá una fuente legítima de Apple para obtener macOS.
+```text
+Utilities/macrecovery/
+```
 
-La versión correcta depende de tu hardware.
+El archivo de referencia/catálogo de recovery es:
 
-Guía general:
+```text
+Utilities/macrecovery/recovery_urls.txt
+```
 
-- Hardware más nuevo: usar una versión de macOS soportada actualmente.
-- Hardware Intel viejo: revisar soporte de OpenCore Legacy Patcher antes de elegir.
-- GPUs/Wi-Fi muy viejos: probablemente necesites OCLP o cambiar hardware.
+Referencia online:
 
-No uses imágenes random modificadas de macOS.
+```text
+https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/recovery_urls.txt
+```
 
-### ProperTree o editor de plist
+### OpCore-Simplify
 
-Sirve para revisar y editar `config.plist`.
+Repositorio oficial:
+
+```text
+https://github.com/lzhoang2801/OpCore-Simplify
+```
+
+Usá OpCore-Simplify para generar la primera EFI según tu hardware.
+
+Importante: OpCore-Simplify crea un punto de partida. Después igual tenés que validar y corregir la EFI para tu máquina exacta.
+
+### macOS Recovery / BaseSystem
+
+Este workflow usa `macrecovery`, que viene dentro de OpenCorePkg, para descargar los archivos Recovery/BaseSystem de Apple para una versión de macOS.
+
+El comando exacto depende de la versión/identificador de macOS que elijas desde `recovery_urls.txt`.
+
+La salida normalmente incluye archivos como:
+
+```text
+BaseSystem.dmg
+BaseSystem.chunklist
+```
+
+Estos archivos van dentro de una carpeta del USB llamada:
+
+```text
+com.apple.recovery.boot
+```
+
+### Herramienta para preparar el USB
+
+Necesitás una herramienta para preparar el pendrive instalador.
+
+Ejemplos:
+
+- Rufus en Windows.
+- Utilidad de Discos en macOS.
+- `diskpart` en Windows.
+- `diskutil` en macOS.
+
+Layout recomendado para este workflow:
+
+```text
+Esquema de particiones: GPT
+Sistema de archivos: FAT32
+```
+
+El USB debe contener:
+
+```text
+EFI/
+com.apple.recovery.boot/
+```
+
+### ProperTree u otro editor de plist
+
+Sirve para revisar o editar `config.plist`.
+
+Siempre hacé backups.
 
 ### OpenCore Legacy Patcher
 
@@ -65,4 +131,5 @@ Este repo no incluye:
 - valores SMBIOS.
 - app de OCLP.
 - app de HeliPort.
-- binario/app de OpenCore Simplify.
+- binario/app de OpCore-Simplify.
+- binarios release de OpenCorePkg.

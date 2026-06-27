@@ -1,38 +1,104 @@
 # 01 - Required downloads
 
-This repo does not bundle third-party tools or macOS.
+This repo does not bundle third-party tools, private EFIs, SMBIOS values, or macOS.
 
 Download what you need separately.
 
-## Required
+## Required tools
 
-### OpenCore
+### OpenCorePkg
 
-OpenCore is the bootloader. You will use it directly or through tools that generate an OpenCore EFI.
+Official repository:
 
-### OpenCore Simplify
+```text
+https://github.com/acidanthera/OpenCorePkg
+```
 
-Used in this workflow to generate the first EFI based on detected hardware.
+You need OpenCorePkg for:
 
-Treat it as a baseline generator. You still need to validate and adjust the EFI.
+- OpenCore release files.
+- OpenCore utilities.
+- `macrecovery`, used to download Apple Recovery/BaseSystem files.
 
-### macOS installer
+Inside OpenCorePkg, `macrecovery` lives under:
 
-Use a legitimate Apple source to obtain macOS.
+```text
+Utilities/macrecovery/
+```
 
-The correct macOS version depends on your hardware.
+The recovery catalog/reference file is:
 
-General guidance:
+```text
+Utilities/macrecovery/recovery_urls.txt
+```
 
-- Newer hardware: use a currently supported macOS version.
-- Older Intel hardware: check OpenCore Legacy Patcher support before choosing.
-- Very old GPUs/Wi-Fi: expect OCLP or hardware replacement.
+Online reference:
 
-Do not download random modified macOS images.
+```text
+https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/recovery_urls.txt
+```
 
-### ProperTree or plist editor
+### OpCore-Simplify
 
-Used to inspect and edit `config.plist`.
+Official repository:
+
+```text
+https://github.com/lzhoang2801/OpCore-Simplify
+```
+
+Use OpCore-Simplify to generate the first EFI based on your hardware.
+
+Important: OpCore-Simplify creates a starting point. You still need to validate and fix the EFI for your exact machine.
+
+### macOS Recovery / BaseSystem files
+
+This workflow uses OpenCorePkg's `macrecovery` tool to download Apple's Recovery/BaseSystem files for a chosen macOS version.
+
+The exact command depends on the macOS version/identifier you choose from `recovery_urls.txt`.
+
+The output normally includes files such as:
+
+```text
+BaseSystem.dmg
+BaseSystem.chunklist
+```
+
+These are placed inside a USB folder named:
+
+```text
+com.apple.recovery.boot
+```
+
+### USB formatting tool
+
+You need a tool to prepare the installer USB.
+
+Examples:
+
+- Rufus on Windows.
+- Disk Utility on macOS.
+- `diskpart` on Windows.
+- `diskutil` on macOS.
+
+Recommended target layout for this workflow:
+
+```text
+Partition scheme: GPT
+Filesystem: FAT32
+```
+
+The USB must contain:
+
+```text
+EFI/
+com.apple.recovery.boot/
+```
+
+### ProperTree or another plist editor
+
+Used to inspect or edit `config.plist`.
+
+Always keep backups.
 
 ### OpenCore Legacy Patcher
 
@@ -65,4 +131,5 @@ This repo does not include:
 - SMBIOS values.
 - OCLP app bundle.
 - HeliPort app bundle.
-- OpenCore Simplify binary.
+- OpCore-Simplify binary/app.
+- OpenCorePkg release binaries.
