@@ -17,7 +17,6 @@ It gives you:
 - What to run.
 - What must be decided per machine.
 - Scripts for hardware collection, USB testing and post-install validation.
-- Templates to document your own machine.
 - A sanitized case study based on an HP Envy 17t-j000.
 
 ## What this repo is not

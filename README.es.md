@@ -17,7 +17,6 @@ Incluye:
 - Qué correr.
 - Qué cosas se deciden sí o sí por máquina.
 - Scripts para relevar hardware, probar USB y validar post-instalación.
-- Plantillas para documentar tu propia computadora.
 - Un caso real sanitizado basado en una HP Envy 17t-j000.
 
 ## Qué no es este repo
