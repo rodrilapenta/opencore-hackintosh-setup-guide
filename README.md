@@ -1,4 +1,4 @@
-# OpenCore Hackintosh Rebuild Guide
+# OpenCore Hackintosh Setup Guide
 
 [Español](README.es.md)
 
@@ -85,13 +85,6 @@ Do not commit:
 - private `config.plist`
 - private EFI folders
 
-Use:
-
-```text
-templates/machine-notes-template.md
-```
-
-to document your own machine safely.
 
 ## Case study
 

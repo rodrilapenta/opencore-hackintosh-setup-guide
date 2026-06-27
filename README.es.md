@@ -1,4 +1,4 @@
-# Guía para armar/reinstalar Hackintosh con OpenCore
+# Guía para instalar/configurar Hackintosh con OpenCore
 
 [English](README.md)
 
@@ -85,13 +85,6 @@ No subas a GitHub:
 - `config.plist` privado
 - carpeta EFI privada
 
-Usá:
-
-```text
-templates/machine-notes-template.md
-```
-
-para documentar tu propia máquina sin filtrar datos privados.
 
 ## Caso real
 
