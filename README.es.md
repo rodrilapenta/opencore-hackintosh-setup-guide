@@ -94,3 +94,5 @@ case-studies/hp-envy-17t-j000/README.md
 ```
 
 Ese caso está sanitizado. Explica qué funcionó en esa máquina sin compartir identificadores privados.
+
+- [Gestión de energía y suspensión](docs/es/12-gestion-energia.md)

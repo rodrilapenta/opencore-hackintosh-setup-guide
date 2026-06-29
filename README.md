@@ -94,3 +94,5 @@ case-studies/hp-envy-17t-j000/README.md
 ```
 
 This case study is sanitized. It explains what worked on that machine without sharing private identifiers.
+
+- [Power management and sleep](docs/en/12-power-management.md)
